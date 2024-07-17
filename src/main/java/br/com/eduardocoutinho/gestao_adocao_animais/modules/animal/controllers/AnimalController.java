@@ -6,6 +6,8 @@ import br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.AnimalEntity;
 import br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.useCases.CreateAnimalUseCase;
 import br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.useCases.ListAnimalUseCase;
 import br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.useCases.UpdateAnimalStatusUseCase;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -35,7 +37,9 @@ public class AnimalController {
     @Autowired
     private UpdateAnimalStatusUseCase updateAnimalStatusUseCase;
 
-    @PostMapping("/")
+    @PostMapping("/register")
+    @Tag(name = "Register",  description = "Create")
+    @Operation(summary = "Create register animals on database.", description = "Create an animal register with the passed data.")
     public ResponseEntity<Object> create( @Valid @RequestBody AnimalEntity animalEntity) {
         try {
             var result = this.createAnimalUseCase.execute(animalEntity);
@@ -45,7 +49,9 @@ public class AnimalController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping("/show")
+    @Tag(name = "Show",  description = "Information")
+    @Operation(summary = "List all animals registered.", description = "Show all the data from all the registered animals.")
     public ResponseEntity<Object> list() {
         try {
             var result = this.listAnimalUseCase.execute();
@@ -55,7 +61,9 @@ public class AnimalController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/status/{id}")
+    @Tag(name = "Update",  description = "Update")
+    @Operation(summary = "Update animal status.", description = "Update an animal register status by id.")
     public ResponseEntity<Object> updateStatus(@RequestBody AnimalEntity animalEntity, HttpServletRequest request, @PathVariable UUID id) {
         try {
             var result = this.updateAnimalStatusUseCase.execute(id, animalEntity.getStatus());
