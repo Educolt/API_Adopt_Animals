@@ -1,16 +1,23 @@
 package br.com.eduardocoutinho.gestao_adocao_animais.modules.animal;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-import org.hibernate.validator.constraints.Length;
+import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
+@Entity(name = "animal")
 public class AnimalEntity {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @NotBlank(message = "O campo não deve ser vazio !")
@@ -18,13 +25,16 @@ public class AnimalEntity {
 
     private String description;
 
-    private String image_url;
+    private String imageUrl;
 
     private String category;
 
-    private Date born_at;
+    private LocalDateTime bornAt;
 
     private Integer age;
 
     private Boolean status;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }
