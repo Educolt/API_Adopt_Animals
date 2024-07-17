@@ -16,6 +16,6 @@ public class AnimalController {
 
     @PostMapping("/")
     public void create( @Valid @RequestBody AnimalEntity animaEntity) {
-        System.out.println(animaEntity.getAge());
+        System.out.println(animaEntity.getName());
     }
 }
