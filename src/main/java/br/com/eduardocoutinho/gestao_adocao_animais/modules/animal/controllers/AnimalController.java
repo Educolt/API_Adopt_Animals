@@ -3,19 +3,24 @@ package br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.AnimalEntity;
+import br.com.eduardocoutinho.gestao_adocao_animais.modules.animal.AnimalRepository;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/animal")
 public class AnimalController {
+
+    @Autowired
+    private AnimalRepository animalRepository;
     
 
     @PostMapping("/")
-    public void create( @Valid @RequestBody AnimalEntity animaEntity) {
-        System.out.println(animaEntity.getName());
+    public AnimalEntity create( @Valid @RequestBody AnimalEntity animalEntity) {
+        return this.animalRepository.save(animalEntity);
     }
 }

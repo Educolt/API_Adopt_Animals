@@ -1,0 +1,9 @@
+package br.com.eduardocoutinho.gestao_adocao_animais.modules.animal;
+
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AnimalRepository extends JpaRepository<AnimalEntity, UUID> {
+    
+}
