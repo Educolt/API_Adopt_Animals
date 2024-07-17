@@ -6,6 +6,6 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface AnimalRepository extends JpaRepository<AnimalEntity, UUID> {
-    /* Optional<AnimalEntity> findByNameOrId(String name, UUID id); */
+public interface IAnimalRepository extends JpaRepository<AnimalEntity, UUID> {
+    Optional<AnimalEntity> findByNameOrId(String name, UUID id);
 }
