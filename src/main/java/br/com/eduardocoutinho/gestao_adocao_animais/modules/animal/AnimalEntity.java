@@ -14,9 +14,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "animal")
 public class AnimalEntity {
     
@@ -38,7 +44,7 @@ public class AnimalEntity {
     private String category;
 
     @Schema(example = "2024-07-16T17:45:30")
-    private LocalDateTime bornAt;
+    private String bornAt;
 
     @Schema(example = "14")
     private Integer age;

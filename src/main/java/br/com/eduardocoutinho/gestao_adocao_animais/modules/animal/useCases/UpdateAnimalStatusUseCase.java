@@ -16,17 +16,13 @@ public class UpdateAnimalStatusUseCase {
     private IAnimalRepository animalRepository;
 
     public Optional<AnimalEntity> execute(UUID id, Boolean status) {
-        Optional<AnimalEntity> optionalAnimal = this.animalRepository.findById(id);
+        AnimalEntity animal = this.animalRepository.findById(id)
+            .orElseThrow(AnimalNotFoundException::new);
 
-        if (optionalAnimal.isPresent()) {
-            AnimalEntity animal = optionalAnimal.get();
-            if (status != null) {
-                animal.setStatus(status);
-                this.animalRepository.save(animal);
-            }
-            return Optional.of(animal);
-        } else {
-            throw new AnimalNotFoundException();
+        if (status != null) {
+            animal.setStatus(status);
         }
+        
+        return Optional.of(this.animalRepository.save(animal));
     }
 }
