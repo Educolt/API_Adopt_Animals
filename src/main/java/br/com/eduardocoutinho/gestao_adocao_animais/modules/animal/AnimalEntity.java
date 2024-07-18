@@ -44,7 +44,7 @@ public class AnimalEntity {
     private String category;
 
     @Schema(example = "2024-07-16T17:45:30")
-    private String bornAt;
+    private LocalDateTime bornAt;
 
     @Schema(example = "14")
     private Integer age;
