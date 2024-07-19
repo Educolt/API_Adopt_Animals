@@ -42,7 +42,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
   $ cd API_Adopt_Animals
 
   # Instalar as dependencias
-  $ npm install
+  $ mvn install
 
   # up docker-compose
   $ docker-compose up -d
