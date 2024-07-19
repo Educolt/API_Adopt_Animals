@@ -51,7 +51,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
   $ mvn exec:java -Dexec.mainClass="br.com.eduardocoutinho.gestao_adocao_animais.GestaoAdocaoAnimaisApplication"
 
 ```
-⚠️ Atention: Antes de rodar o app, setar o valor da porta em que à api está rodando.
+⚠️ Atention: Antes de rodar o app, setar o valor da porta em que o frontend está rodando.
 
 ---
 
